@@ -1,0 +1,16 @@
+1 - SELECT * FROM produto
+
+2 - SELECT codFornecedor, nomeFantasia, endereco, telefone, codCidade
+    FROM fornecedor
+
+3 - SELECT codVenda, dataVenda, status 
+    FROM venda 
+    WHERE status = "Despachada"
+
+4 - SELECT * FROM clienteJuridico
+
+5 - SELECT numeroLote, dataValidade
+    FROM produtoLote
+    WHERE dataValidade < CURRENT_DATE()
+
+6 - SELECT nome FROM departamento 

@@ -1,0 +1,41 @@
+1 - SELECT vendedor.codVendedor, vendedor.nome, vendedor.endereco, cidade.nome AS cidade_nome, cidade.siglaEstado, estado.nome AS nome_estado
+    FROM vendedor
+    JOIN cidade ON vendedor.codCidade = cidade.codCidade
+    JOIN estado ON cidade.siglaEstado = estado.siglaEstado
+
+
+2 - SELECT venda.codVenda, venda.dataVenda, vendedor.nome, venda.status
+    FROM venda
+    JOIN vendedor ON venda.codVenda = vendedor.codVendedor
+    WHERE venda.status = "Despachada"
+
+
+3 - SELECT clienteFisico.nome, cliente.endereco
+    FROM clienteFisico
+    JOIN cliente ON clienteFisico.codCliente = cliente.codCliente
+    WHERE cliente.endereco = "Rua Marechal Floriano, 56"
+
+4 - SELECT clienteJuridico.*, cliente.*
+    FROM clienteJuridico
+    JOIN cliente ON clienteJuridico.codCliente = cliente.codCliente
+
+5 - SELECT clienteJuridico.nomeFantasia, cliente.endereco, cliente.telefone, cidade.nome AS nome_cidade, cidade.siglaEstado
+    FROM clienteJuridico
+    JOIN cliente ON clienteJuridico.codCliente = cliente.codCliente
+    JOIN cidade ON cliente.codCliente = cidade.codCidade
+    WHERE cliente.dataCadastro BETWEEN "01-01-1999" AND "30-06-2003"
+
+6 - SELECT vendedor.nome
+    FROM venda
+    JOIN vendedor ON venda.codVendedor = vendedor.codVendedor
+    JOIN clienteJuridico ON venda.codCliente = clienteJuridico.codCliente
+    WHERE clienteJuridico.nomeFantasia = 'Gelinski';
+
+7 - SELECT produtoLote.codProduto, produtoLote.numeroLote, produto.descricao
+    FROM produtoLote
+    JOIN produto ON produtoLote.codProduto = produto.codProduto
+    WHERE produtoLote.dataValidade <= CURRENT_DATE
+
+8 - SELECT departamento.nome AS nome_departamento, vendedor.nome AS nome_vendedor
+    FROM departamento
+    JOIN vendedor ON departamento.codDepartamento = vendedor.codDepartamento
